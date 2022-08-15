@@ -1,17 +1,17 @@
-// trigger to play music in the background with sweetalert
-window.addEventListener('load', () => {
+// Musik Bakcround
+window.addEventListener("load", () => {
   Swal.fire({
-    title: 'Do you want to play music in the background?',
+    title: "Do you want to play music in the background?",
     // text: "You won't be able to revert this!",
-    icon: 'warning',
+    icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes',
-    cancelButtonText: 'No',
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
   }).then((result) => {
     if (result.isConfirmed) {
-      document.querySelector('.song').play();
+      document.querySelector(".song").play();
       resolveFetch().then(animationTimeline());
     } else {
       resolveFetch().then(animationTimeline());
@@ -19,74 +19,75 @@ window.addEventListener('load', () => {
   });
 });
 
-
-// animation timeline
+// Animasi
 const animationTimeline = () => {
   // split chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
 
-  textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
-    .split("")
-    .join("</span><span>")}</span`;
+  textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML.split("").join("</span><span>")}</span`;
 
-  hbd.innerHTML = `<span>${hbd.innerHTML
-    .split("")
-    .join("</span><span>")}</span`;
+  hbd.innerHTML = `<span>${hbd.innerHTML.split("").join("</span><span>")}</span`;
 
   const ideaTextTrans = {
     opacity: 0,
     y: -20,
     rotationX: 5,
-    skewX: "15deg"
-  }
+    skewX: "15deg",
+  };
 
   const ideaTextTransLeave = {
     opacity: 0,
     y: 20,
     rotationY: 5,
-    skewX: "-15deg"
-  }
+    skewX: "-15deg",
+  };
 
   // timeline
   const tl = new TimelineMax();
 
   tl.to(".container", 0.6, {
-    visibility: "visible"
+    visibility: "visible",
   })
     .from(".one", 0.7, {
       opacity: 0,
-      y: 10
+      y: 10,
     })
     .from(".two", 0.4, {
       opacity: 0,
-      y: 10
+      y: 10,
     })
-    .to(".one",
+    .to(
+      ".one",
       0.7,
       {
         opacity: 0,
-        y: 10
+        y: 10,
       },
-    "+=3.5")
-    .to(".two",
+      "+=3.5"
+    )
+    .to(
+      ".two",
       0.7,
       {
         opacity: 0,
-        y: 10
+        y: 10,
       },
-    "-=1")
+      "-=1"
+    )
     .from(".three", 0.7, {
       opacity: 0,
-      y: 10
+      y: 10,
     })
-    .to(".three",
+    .to(
+      ".three",
       0.7,
       {
         opacity: 0,
-        y: 10
+        y: 10,
       },
-    "+=3")
+      "+=3"
+    )
     .from(".four", 0.7, {
       scale: 0.2,
       opacity: 0,
@@ -97,23 +98,30 @@ const animationTimeline = () => {
     })
     .staggerTo(
       ".hbd-chatbox span",
-      1.5, {
+      1.5,
+      {
         visibility: "visible",
       },
       0.05
     )
-    .to(".fake-btn", 0.1, {
-      backgroundColor: "rgb(127, 206, 248)",
-    },
-    "+=4")
+    .to(
+      ".fake-btn",
+      0.1,
+      {
+        backgroundColor: "rgb(127, 206, 248)",
+      },
+      "+=4"
+    )
     .to(
       ".four",
-      0.5, {
+      0.5,
+      {
         scale: 0.2,
         opacity: 0,
-        y: -150
+        y: -150,
       },
-    "+=1")
+      "+=1"
+    )
     .from(".idea-1", 0.7, ideaTextTrans)
     .to(".idea-1", 0.7, ideaTextTransLeave, "+=2.5")
     .from(".idea-2", 0.7, ideaTextTrans)
@@ -130,7 +138,8 @@ const animationTimeline = () => {
     .to(".idea-4", 0.7, ideaTextTransLeave, "+=2.5")
     .from(
       ".idea-5",
-      0.7, {
+      0.7,
+      {
         rotationX: 15,
         rotationZ: -10,
         skewY: "-5deg",
@@ -142,7 +151,8 @@ const animationTimeline = () => {
     )
     .to(
       ".idea-5 span",
-      0.7, {
+      0.7,
+      {
         rotation: 90,
         x: 8,
       },
@@ -150,7 +160,8 @@ const animationTimeline = () => {
     )
     .to(
       ".idea-5",
-      0.7, {
+      0.7,
+      {
         scale: 0.2,
         opacity: 0,
       },
@@ -158,7 +169,8 @@ const animationTimeline = () => {
     )
     .staggerFrom(
       ".idea-6 span",
-      0.8, {
+      0.8,
+      {
         scale: 3,
         opacity: 0,
         rotation: 15,
@@ -168,7 +180,8 @@ const animationTimeline = () => {
     )
     .staggerTo(
       ".idea-6 span",
-      0.8, {
+      0.8,
+      {
         scale: 3,
         opacity: 0,
         rotation: -15,
@@ -179,10 +192,12 @@ const animationTimeline = () => {
     )
     .staggerFromTo(
       ".baloons img",
-      2.5, {
+      2.5,
+      {
         opacity: 0.9,
         y: 1400,
-      }, {
+      },
+      {
         opacity: 1,
         y: -1000,
       },
@@ -190,7 +205,8 @@ const animationTimeline = () => {
     )
     .from(
       ".profile-picture",
-      0.5, {
+      0.5,
+      {
         scale: 3.5,
         opacity: 0,
         x: 25,
@@ -207,7 +223,8 @@ const animationTimeline = () => {
     })
     .staggerFrom(
       ".wish-hbd span",
-      0.7, {
+      0.7,
+      {
         opacity: 0,
         y: -50,
         // scale: 0.3,
@@ -219,10 +236,12 @@ const animationTimeline = () => {
     )
     .staggerFromTo(
       ".wish-hbd span",
-      0.7, {
+      0.7,
+      {
         scale: 1.4,
         rotationY: 150,
-      }, {
+      },
+      {
         scale: 1,
         rotationY: 0,
         color: "#ff69b4",
@@ -233,7 +252,8 @@ const animationTimeline = () => {
     )
     .from(
       ".wish h5",
-      0.5, {
+      0.5,
+      {
         opacity: 0,
         y: 10,
         skewX: "-15deg",
@@ -242,7 +262,8 @@ const animationTimeline = () => {
     )
     .staggerTo(
       ".eight svg",
-      1.5, {
+      1.5,
+      {
         visibility: "visible",
         opacity: 0,
         scale: 80,
@@ -259,7 +280,8 @@ const animationTimeline = () => {
     .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
     .to(
       ".last-smile",
-      0.5, {
+      0.5,
+      {
         rotation: 90,
       },
       "+=1"
@@ -270,19 +292,17 @@ const animationTimeline = () => {
   replyBtn.addEventListener("click", () => {
     tl.restart();
   });
-}
+};
 
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
-    .then(data => data.json())
-    .then(data => {
-      Object.keys(data).map(customData => {
+    .then((data) => data.json())
+    .then((data) => {
+      Object.keys(data).map((customData) => {
         if (data[customData] !== "") {
           if (customData === "imagePath") {
-            document
-              .getElementById(customData)
-              .setAttribute("src", data[customData]);
+            document.getElementById(customData).setAttribute("src", data[customData]);
           } else {
             document.getElementById(customData).innerText = data[customData];
           }
